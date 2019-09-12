@@ -8,25 +8,33 @@ sayHello('World');
  * require style imports
  */
 const {getMovies} = require('./api.js');
-// const {addMovies} = require('./api.js');
-function postMovies () {
+let movieArray;
+
+function postMovies() {
   getMovies().then((movies) => {
     console.log('Here are all the movies:');
+    movieArray = movies;
+    console.log(movieArray);
     movies.forEach(({title, rating, id}) => {
       console.log(`id#${id} - ${title} - rating: ${rating}`);
-      $("#movie-box").append(`<div class="card">id#${id} - ${title} - rating: ${rating}</div>`)
+      $("#movie-box").append(`<div class="card">id#${id} - ${title} - rating: ${rating}</div><button class="delete-button">This movie is garbage</button><button class="edit-button">Fix what this says.</button>`);
+    });
+    $(".delete-button").on('click', () => {
+      $(this)
     });
   }).catch((error) => {
     alert('Oh no! Something went wrong.\nCheck the console for details.')
     console.log(error);
   })
-};
+}
 
 postMovies();
 
 let submitBtn = document.getElementById("submit");
 submitBtn.addEventListener("click", function() {
-  let newId = $("#movie-box").children().last().index() + 2;
+  let lastElement = movieArray.length - 1
+  let newId = movieArray[lastElement].id + 1;
+  console.log(newId);
   let newTitle = $("#movie-title").val();
   let newRating = $("#ratings").val();
   let newMovieObject = {
@@ -41,16 +49,22 @@ submitBtn.addEventListener("click", function() {
     },
     body: JSON.stringify(newMovieObject),
   };
-  fetch('api/movies', options)
-      .then(getMovies())
+  fetch('api/movies', options).then((movies) => {
+    movieArray = movies;
+  }).then(() => {
+    postMovies()
+    $("#movie-box").html("");
+  })
+
       .catch(console.log("Panic"));
-      $("#movie-box").append(`<div class="card">id#${newMovieObject.id} - ${newMovieObject.title} - rating: ${newMovieObject.rating}</div>`);
       //=== Clears text from text box after submitted
       $("#movie-title").val("");
       $("#ratings").val("");
-
-  console.log(newMovieObject);
 });
+
+
+
+
 
 /**
  *
