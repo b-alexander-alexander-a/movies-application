@@ -45,10 +45,12 @@ submitBtn.addEventListener("click", function() {
       .then(getMovies())
       .catch(console.log("Panic"));
       $("#movie-box").append(`<div class="card">id#${newMovieObject.id} - ${newMovieObject.title} - rating: ${newMovieObject.rating}</div>`);
+      //=== Clears text from text box after submitted
+      $("#movie-title").val("");
+      $("#ratings").val("");
 
   console.log(newMovieObject);
 });
-
 
 /**
  *
