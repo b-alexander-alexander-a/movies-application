@@ -13,6 +13,7 @@ getMovies().then((movies) => {
   console.log('Here are all the movies:');
   movies.forEach(({title, rating, id}) => {
     console.log(`id#${id} - ${title} - rating: ${rating}`);
+    $("#movie-box").append(`<div class="card">id#${id} - ${title} - rating: ${rating}</div>`)
   });
 }).catch((error) => {
   alert('Oh no! Something went wrong.\nCheck the console for details.')
