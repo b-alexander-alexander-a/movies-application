@@ -8,6 +8,7 @@ sayHello('World');
  * require style imports
  */
 const {getMovies} = require('./api.js');
+// const {addMovies} = require('./api.js');
 
 getMovies().then((movies) => {
   console.log('Here are all the movies:');
@@ -22,6 +23,24 @@ getMovies().then((movies) => {
 
 
 
+const testMovie = {
+  "title": "Pulp Fiction",
+  "rating": "5",
+  "id": 3
+}
+const url = 'api/movies';
+const options = {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify(testMovie),
+};
+fetch(url, options)
+    .then(getMovies())
+    .catch(console.log("Panic"));
+
+
 /**
  *
  * 0. Create loading message.
@@ -32,6 +51,3 @@ getMovies().then((movies) => {
  * 3. Create form that allows the creation of a movie and it's rating
  *
  */
-
-
-
