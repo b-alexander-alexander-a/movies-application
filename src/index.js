@@ -9,47 +9,45 @@ sayHello('World');
  */
 const {getMovies} = require('./api.js');
 // const {addMovies} = require('./api.js');
+function postMovies () {
+  getMovies().then((movies) => {
+    console.log('Here are all the movies:');
+    movies.forEach(({title, rating, id}) => {
+      console.log(`id#${id} - ${title} - rating: ${rating}`);
+      $("#movie-box").append(`<div class="card">id#${id} - ${title} - rating: ${rating}</div>`)
+    });
+  }).catch((error) => {
+    alert('Oh no! Something went wrong.\nCheck the console for details.')
+    console.log(error);
+  })
+};
 
-getMovies().then((movies) => {
-  console.log('Here are all the movies:');
-  movies.forEach(({title, rating, id}) => {
-    console.log(`id#${id} - ${title} - rating: ${rating}`);
-    $("#movie-box").append(`<div class="card">id#${id} - ${title} - rating: ${rating}</div>`)
-  });
-}).catch((error) => {
-  alert('Oh no! Something went wrong.\nCheck the console for details.')
-  console.log(error);
-});
+postMovies();
 
 let submitBtn = document.getElementById("submit");
 submitBtn.addEventListener("click", function() {
   let newId = $("#movie-box").children().last().index() + 2;
-  console.log(newId);
+  let newTitle = $("#movie-title").val();
+  let newRating = $("#ratings").val();
+  let newMovieObject = {
+    "title": newTitle,
+    "rating": newRating,
+    "id": newId
+  };
+  const options = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(newMovieObject),
+  };
+  fetch('api/movies', options)
+      .then(getMovies())
+      .catch(console.log("Panic"));
+      $("#movie-box").append(`<div class="card">id#${newMovieObject.id} - ${newMovieObject.title} - rating: ${newMovieObject.rating}</div>`);
+
+  console.log(newMovieObject);
 });
-
-
-
-  // function() {
-  //   const newMovieTitle = $("#movie-title").val();
-  //   console.log("newMovieTitle");
-  // };
-const testMovie = {
-  "title": "Pulp Fiction",
-  "rating": "5",
-  "id": 3
-};
-
-const url = 'api/movies';
-const options = {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json',
-  },
-  body: JSON.stringify(testMovie),
-};
-fetch(url, options)
-    .then(getMovies())
-    .catch(console.log("Panic"));
 
 
 /**

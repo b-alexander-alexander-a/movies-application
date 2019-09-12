@@ -14,6 +14,36 @@
       "title": "Pulp Fiction",
       "rating": "5",
       "id": 3
+    },
+    {
+      "title": "Inception",
+      "rating": "7",
+      "id": 4
+    },
+    {
+      "title": "Toy Story 18",
+      "rating": "42",
+      "id": 5
+    },
+    {
+      "title": "Hunt for Red October",
+      "rating": "2",
+      "id": 6
+    },
+    {
+      "title": "Hannibal",
+      "rating": "3",
+      "id": 7
+    },
+    {
+      "title": "Finding Nemo",
+      "rating": "9",
+      "id": 8
+    },
+    {
+      "title": "Mulan",
+      "rating": "22",
+      "id": 9
     }
   ]
 }
