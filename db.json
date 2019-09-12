@@ -14,6 +14,16 @@
       "title": "Inception",
       "rating": "7",
       "id": 4
+    },
+    {
+      "title": "Finding Nemo",
+      "rating": "23",
+      "id": 5
+    },
+    {
+      "title": "Pulp Fiction",
+      "rating": "77",
+      "id": 7
     }
   ]
 }

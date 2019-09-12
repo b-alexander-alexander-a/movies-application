@@ -41,12 +41,30 @@ function postMovies() {
   })
 }
 
-postMovies();
+let lastElementOnLoad;
+let highestIdOnLead;
+  postMovies();
+
+$( document ).ready(function() {
+  getMovies().then((movies) => {
+    movieArray = movies;
+    lastElementOnLoad = movieArray.length - 1;
+    highestIdOnLead = movieArray[lastElementOnLoad].id;
+  })
+});
+
+let maybeId = 0;
+let newId;
 
 let submitBtn = document.getElementById("submit");
 submitBtn.addEventListener("click", function() {
-  let lastElement = movieArray.length - 1
-  let newId = movieArray[lastElement].id + 1;
+  if (highestIdOnLead > maybeId) {
+    newId = highestIdOnLead + 1;
+    maybeId = highestIdOnLead + 1;
+  } else {
+    newId = maybeId + 1
+    maybeId += 1
+  }
   console.log(newId);
   let newTitle = $("#movie-title").val();
   let newRating = $("#ratings").val();
