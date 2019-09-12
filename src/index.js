@@ -23,8 +23,9 @@ getMovies().then((movies) => {
 
 let submitBtn = document.getElementById("submit");
 submitBtn.addEventListener("click", function() {
-  // console.log("test");
-})
+  let newId = $("#movie-box").children().last().index() + 2;
+  console.log(newId);
+});
 
 
 
