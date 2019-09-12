@@ -15,13 +15,26 @@ function postMovies() {
     console.log('Here are all the movies:');
     movieArray = movies;
     console.log(movieArray);
+
     movies.forEach(({title, rating, id}) => {
+
       console.log(`id#${id} - ${title} - rating: ${rating}`);
-      $("#movie-box").append(`<div class="card">id#${id} - ${title} - rating: ${rating}</div><button class="delete-button">This movie is garbage</button><button class="edit-button">Fix what this says.</button>`);
+
+      $("#movie-box").append(`<section class="card-div"><div class="card">id#${id} - ${title} - rating: ${rating}</div><button class="delete-button" id="${id}">This movie is garbage</button><button class="edit-button ${id}">Fix what this says.</button></section>`);
     });
-    $(".delete-button").on('click', () => {
-      $(this)
+
+    $('.delete-button').click(function () {
+        let buttonId = $(this).attr('id');
+
     });
+
+    // $(".delete-button").on('click', () => {
+    //   console.log($(this).attr('id'));
+    //   // let buttonId = $(this).attr('id');
+    //   // console.log(buttonId);
+    // });
+
+
   }).catch((error) => {
     alert('Oh no! Something went wrong.\nCheck the console for details.')
     console.log(error);
@@ -62,7 +75,9 @@ submitBtn.addEventListener("click", function() {
       $("#ratings").val("");
 });
 
+function deletePost(postId) {
 
+}
 
 
 
