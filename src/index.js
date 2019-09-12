@@ -1,9 +1,9 @@
 /**
  * es6 modules and imports
  */
+
 import sayHello from './hello';
 sayHello('World');
-
 /**
  * require style imports
  */
@@ -21,13 +21,23 @@ getMovies().then((movies) => {
   console.log(error);
 });
 
+let submitBtn = document.getElementById("submit");
+submitBtn.addEventListener("click", function() {
+  // console.log("test");
+})
 
 
+
+  // function() {
+  //   const newMovieTitle = $("#movie-title").val();
+  //   console.log("newMovieTitle");
+  // };
 const testMovie = {
   "title": "Pulp Fiction",
   "rating": "5",
   "id": 3
-}
+};
+
 const url = 'api/movies';
 const options = {
   method: 'POST',
