@@ -18,3 +18,19 @@ getMovies().then((movies) => {
   alert('Oh no! Something went wrong.\nCheck the console for details.')
   console.log(error);
 });
+
+
+
+/**
+ *
+ * 0. Create loading message.
+ *      in order: load page, fetch api, check to see if content is loaded
+ *      (if no after a certain amount of time has passed: display 'L' and check again. repeat until content is loaded)
+ * 1. Create connection to db.json in place of api via Ajax request J
+ * 2. Make button to Add dropdown a form to add movies
+ * 3. Create form that allows the creation of a movie and it's rating
+ *
+ */
+
+
+
