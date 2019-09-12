@@ -25,7 +25,7 @@ function postMovies() {
 
     $('.delete-button').click(function () {
         let buttonId = $(this).attr('id');
-
+        deletePost(buttonId);
     });
 
     // $(".delete-button").on('click', () => {
@@ -76,7 +76,20 @@ submitBtn.addEventListener("click", function() {
 });
 
 function deletePost(postId) {
+  const url = `api/movies/${postId}`;
+  const options = {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  };
 
+  fetch(url, options).then((movies) => {
+    movieArray = movies;
+  }).then(() => {
+    postMovies();
+    $("#movie-box").html("");
+  })
 }
 
 

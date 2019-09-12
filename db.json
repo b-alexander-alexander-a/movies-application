@@ -11,19 +11,9 @@
       "id": 2
     },
     {
-      "title": "Pulp Fiction",
-      "rating": "5",
-      "id": 3
-    },
-    {
       "title": "Inception",
       "rating": "7",
       "id": 4
-    },
-    {
-      "title": "Toy Story 18",
-      "rating": "42",
-      "id": 5
     }
   ]
 }
