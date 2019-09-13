@@ -22,18 +22,33 @@ header {
 
 main {
     height: 100%;
-    background: hotpink;
+    background: darkslategray;
     grid-area: 1 / 2 / 2 / 3;
+}
+
+#load-head {
+    height: 100%;
+    width: 100%;
+    background: darkred;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+h3 {
+    display: inline-block;
+    padding-right: 10px;
 }
 
 footer {
     height: 10%;
-    background: goldenrod;
+    background: lavender;
 }
 
 aside {
     height: 100%;
-    background: sandybrown;
+    background: dimgrey;
     grid-area: 1 / 1 / 2 / 2;
 }
 
