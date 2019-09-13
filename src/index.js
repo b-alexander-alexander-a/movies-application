@@ -40,9 +40,24 @@ function postMovies() {
               <input type="text" id="rename-title" value="${movieToEdit.title}">
               <label for="edit-rating">Edit Rating</label>
               <input type="text" id="edit-rating" value="${movieToEdit.rating}">
-              <input type="submit" id="submit-edit">`);
+              <input type="submit" id="submit-edit" class="${editId}">`);
 
-          $("#submit-edit").click()
+          $("#submit-edit").click(function() {
+            let submitBtn = $(this).attr("class");
+            const url = `api/movies/${submitBtn}`;
+            fetch(url).then(function(editCinema) {
+              return editCinema.json().then(function (relavent) {
+                let newTitle = $("#rename-title").val();
+                let newRating = $("#edit-rating").val();
+                let newMovieObject = {
+                  "title": newTitle,
+                  "rating": newRating,
+                  "id": relavent.id
+                };
+                addEditedMovie(newMovieObject);
+              })
+            })
+          })
 
         }).then((movies) => {
             movieArray = movies;
@@ -61,13 +76,6 @@ function postMovies() {
   })
 }
 
-// let newTitle = $("#rename-title").val();
-// let newRating = $("#edit-rating").val();
-// let newMovieObject = {
-//   "title": newTitle,
-//   "rating": newRating,
-//   "id": editId
-// };
 
 let lastElementOnLoad;
 let highestIdOnLead;
@@ -149,7 +157,7 @@ function deletePost(postId) {
 function addEditedMovie(editedMovie) {
   const url = `api/movies/${editedMovie.id}`;
   const options = {
-    method: 'POST',
+    method: 'PATCH',
     headers: {
       'Content-Type': 'application/json',
     },
