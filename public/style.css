@@ -45,3 +45,8 @@ aside {
     width: 33% !important;
 
 }
+
+#load-head {
+    grid-area: 1 / 1 / 2 / 3 !important;
+    z-index: 50;
+}

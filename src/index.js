@@ -11,18 +11,15 @@ const {getMovies} = require('./api.js');
 let movieArray;
 
 function postMovies() {
-  $("#movie-box").html("<h1 id='load-head'>LOADING...</h1>");
+  $("#load-head").css("z-index", "50");
   getMovies().then((movies) => {
-    console.log('Here are all the movies:');
     movieArray = movies;
-    console.log(movieArray);
-    $("#movie-box").html("<h1 id='load-head'>LOADING...</h1>");
+    let movieVariable;
     movies.forEach(({title, rating, id}) => {
-
-      console.log(`id#${id} - ${title} - rating: ${rating}`);
-
-      $("#movie-box").append(`<section class="card-div card"><div class="card-body">id#${id} - ${title} - rating: ${rating}</div><button class="delete-button">This movie is garbage</button><button class="edit-button" id="${id}">Fix what this says.</button></section>`);
+      movieVariable += `<section class="card-div card"><div class="card-body">id#${id} - ${title} - rating: ${rating}</div><button class="delete-button">This movie is garbage</button><button class="edit-button" id="${id}">Fix what this says.</button></section>`
+    $("#movie-box").html(movieVariable);
     });
+
 
     $('.delete-button').click(function () {
         let buttonId = $(this).next().attr('id');
@@ -63,15 +60,15 @@ function postMovies() {
             movieArray = movies;
           }).then(() => {
             postMovies();
-            $("#movie-box").html("");
+            $("#load-head").css("z-index", "-50");
           });
 
         });
       })
     }).then(function () {
-    $('#load-head').hide('')
+    $('#load-head').css("z-index", "-50");
   }).catch((error) => {
-    alert('Oh no! Something went wrong.\nCheck the console for details.')
+    alert('Oh no! Something went wrong.\nCheck the console for details.');
     console.log(error);
   })
 }
@@ -119,8 +116,8 @@ submitBtn.addEventListener("click", function() {
   fetch('api/movies', options).then((movies) => {
     movieArray = movies;
   }).then(() => {
-    postMovies()
-    $("#movie-box").html("");
+    postMovies();
+    $("#load-head").css("z-index", "-50");
   })
 
       .catch(console.log("Panic"));
@@ -137,15 +134,6 @@ function deletePost(postId) {
       'Content-Type': 'application/json',
     },
   };
-
-  // function deletePost(postId) {
-  //   const url = `api/movies/${postId}`;
-  //   const options = {
-  //     method: 'DELETE',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //     },
-  //   };
 
   fetch(url, options).then((movies) => {
     movieArray = movies;
@@ -168,7 +156,7 @@ function addEditedMovie(editedMovie) {
     movieArray = movies;
   }).then(() => {
     postMovies();
-    $("#movie-box").html("");
+    $("#load-head").css("z-index", "-50");
   })
 }
 
