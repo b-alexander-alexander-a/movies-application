@@ -21,7 +21,7 @@ function postMovies() {
 
       console.log(`id#${id} - ${title} - rating: ${rating}`);
 
-      $("#movie-box").append(`<section class="card-div"><div class="card">id#${id} - ${title} - rating: ${rating}</div><button class="delete-button">This movie is garbage</button><button class="edit-button" id="${id}">Fix what this says.</button></section>`);
+      $("#movie-box").append(`<section class="card-div card"><div class="card-body">id#${id} - ${title} - rating: ${rating}</div><button class="delete-button">This movie is garbage</button><button class="edit-button" id="${id}">Fix what this says.</button></section>`);
     });
 
     $('.delete-button').click(function () {

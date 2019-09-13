@@ -1,7 +1,7 @@
 {
   "movies": [
     {
-      "title": "A Star Wars Story: Rogue One",
+      "title": "A Star Wars Episode 88",
       "rating": "6",
       "id": 2
     },
@@ -21,9 +21,9 @@
       "id": 8
     },
     {
-      "title": "",
-      "rating": "",
-      "id": 9
+      "title": "Shawshank Redemtion",
+      "rating": "Yes",
+      "id": 10
     }
   ]
 }
