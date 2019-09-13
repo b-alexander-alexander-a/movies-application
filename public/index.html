@@ -7,14 +7,18 @@
     <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <aside id="form-thing"></aside>
     <header class="container">
         <h1>Movie Ratings R' Us</h1>
 <!--        <p>To get started, edit <code>src/index.js</code>.</p>-->
     </header>
-    <main>
-        <div id="movie-box" class="container"></div>
-    </main>
+    <div class="container">
+        <div class="row-fluid">
+            <aside id="form-thing" class="col-3 row-eq-height"></aside>
+            <main class="container-fluid col-9">
+                <div id="movie-box" class="container"></div>
+            </main>
+        </div>
+    </div>
     <footer>
         <input id="movie-title" type="text" placeholder="Movie title">
         <input id="ratings" type="text" placeholder="Rating">

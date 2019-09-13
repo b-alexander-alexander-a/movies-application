@@ -1,33 +1,38 @@
 html, body {
-    height: 200%;
-    width: 100%;
-    margin:0;
-    padding: 0;
+    height: 100%;
 }
 
 header {
-    width: 100%;
     height: 10%;
     background: lavender;
 }
 
 main {
     height: 80%;
-    width: 100%;
     background: hotpink;
+}
+
+main, aside {
+    margin-bottom: -9999px;
+    padding-bottom: 9999px;
 }
 
 footer {
     height: 10%;
-    width: 100%;
     background: goldenrod;
 }
 
 aside {
     height: 100%;
-    width: 20%;
     background: sandybrown;
 }
+
+.container {
+    min-height: 100%;
+    overflow: hidden;
+}
+
+
 
 /*.container {*/
 /*    position: relative;*/
