@@ -11,30 +11,31 @@ const {getMovies} = require('./api.js');
 let movieArray;
 
 function postMovies() {
+  $("#movie-box").html("<h1 id='load-head'>LOADING...</h1>");
   getMovies().then((movies) => {
     console.log('Here are all the movies:');
     movieArray = movies;
     console.log(movieArray);
-
+    $("#movie-box").html("<h1 id='load-head'>LOADING...</h1>");
     movies.forEach(({title, rating, id}) => {
 
       console.log(`id#${id} - ${title} - rating: ${rating}`);
 
-      $("#movie-box").append(`<section class="card-div"><div class="card">id#${id} - ${title} - rating: ${rating}</div><button class="delete-button" id="${id}">This movie is garbage</button><button class="edit-button ${id}">Fix what this says.</button></section>`);
+      $("#movie-box").append(`<section class="card-div"><div class="card">id#${id} - ${title} - rating: ${rating}</div><button class="delete-button">This movie is garbage</button><button class="edit-button" id="${id}">Fix what this says.</button></section>`);
     });
 
     $('.delete-button').click(function () {
-        let buttonId = $(this).attr('id');
+        let buttonId = $(this).next().attr('id');
         deletePost(buttonId);
     });
 
-    // $(".delete-button").on('click', () => {
-    //   console.log($(this).attr('id'));
-    //   // let buttonId = $(this).attr('id');
-    //   // console.log(buttonId);
-    // });
+    $('.edit-button').click(function() {
+      let editId = $(this).attr('id');
+      console.log(editId);
+    })
 
-
+  }).then(function () {
+    $('#load-head').hide('')
   }).catch((error) => {
     alert('Oh no! Something went wrong.\nCheck the console for details.')
     console.log(error);
@@ -62,8 +63,8 @@ submitBtn.addEventListener("click", function() {
     newId = highestIdOnLead + 1;
     maybeId = highestIdOnLead + 1;
   } else {
-    newId = maybeId + 1
-    maybeId += 1
+    newId = maybeId + 1;
+    maybeId += 1;
   }
   console.log(newId);
   let newTitle = $("#movie-title").val();
@@ -102,11 +103,19 @@ function deletePost(postId) {
     },
   };
 
+  // function deletePost(postId) {
+  //   const url = `api/movies/${postId}`;
+  //   const options = {
+  //     method: 'DELETE',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     },
+  //   };
+
   fetch(url, options).then((movies) => {
     movieArray = movies;
   }).then(() => {
     postMovies();
-    $("#movie-box").html("");
   })
 }
 
