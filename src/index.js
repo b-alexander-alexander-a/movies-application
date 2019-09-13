@@ -14,11 +14,13 @@ function postMovies() {
   $("#load-head").css("z-index", "50");
   getMovies().then((movies) => {
     movieArray = movies;
-    let movieVariable;
+    let movieVariable = "";
+    console.log(movieVariable);
     movies.forEach(({title, rating, id}) => {
       movieVariable += `<section class="card-div card"><div class="card-body">id#${id} - ${title} - rating: ${rating}</div><button class="delete-button">This movie is garbage</button><button class="edit-button" id="${id}">Fix what this says.</button></section>`
     $("#movie-box").html(movieVariable);
     });
+    console.log(movieVariable);
 
 
     $('.delete-button').click(function () {
@@ -62,9 +64,9 @@ function postMovies() {
             postMovies();
             $("#load-head").css("z-index", "-50");
           });
-
         });
       })
+    //Makes loading text disappear.
     }).then(function () {
     $('#load-head').css("z-index", "-50");
   }).catch((error) => {

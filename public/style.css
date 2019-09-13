@@ -12,6 +12,7 @@ header {
     height: 10%;
     background: lavender;
     width: 100% !important;
+    text-align: center !important;
 }
 
 #name-heading {
