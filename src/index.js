@@ -32,7 +32,14 @@ function postMovies() {
     $('.edit-button').click(function() {
       let editId = $(this).attr('id');
       console.log(editId);
-    })
+      let editMovie = movieArray[editId - 1];
+      $('aside').html(`<form><label for="rename-title">Movie Title Here</label>
+            <input type="text" id="rename-title">
+            <label for="edit-rating">Edit Rating</label>
+            <input type="text" id="edit-rating">
+            <input type="submit" id="submit-edit"></form>`)
+    });
+
 
   }).then(function () {
     $('#load-head').hide('')

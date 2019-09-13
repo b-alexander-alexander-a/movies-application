@@ -23,6 +23,12 @@ footer {
     background: goldenrod;
 }
 
+aside {
+    height: 100%;
+    width: 20%;
+    background: sandybrown;
+}
+
 /*.container {*/
 /*    position: relative;*/
 /*    top: 50%;*/
