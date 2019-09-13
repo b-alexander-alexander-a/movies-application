@@ -11,14 +11,19 @@
       "id": 8
     },
     {
-      "title": "Shawshank Redemtion",
-      "rating": "Yes",
+      "title": "Shawshank Redemption",
+      "rating": "42",
       "id": 10
     },
     {
-      "title": "Hi Brance",
-      "rating": "Pi",
-      "id": 12
+      "title": "Don't you say hi to me",
+      "rating": "Negative Pi",
+      "id": 13
+    },
+    {
+      "title": "T for Tendetta",
+      "rating": "5",
+      "id": 14
     }
   ]
 }

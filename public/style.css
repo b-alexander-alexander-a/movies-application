@@ -6,6 +6,7 @@ html, body {
     display: grid !important;
     grid-template-rows: 1fr;
     grid-template-columns: 20% 80%;
+    min-height: 80%;
 }
 
 header {

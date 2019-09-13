@@ -157,8 +157,8 @@ function addEditedMovie(editedMovie) {
   fetch(url, options).then((movies) => {
     movieArray = movies;
   }).then(() => {
+    $("aside").html("");
     postMovies();
-    $("#load-head").css("z-index", "-50");
   })
 }
 
