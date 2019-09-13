@@ -3,7 +3,7 @@ html, body {
 }
 
 header {
-    height: 10%;
+    height: 10% !important;
     background: lavender;
 }
 
