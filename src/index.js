@@ -32,22 +32,42 @@ function postMovies() {
     $('.edit-button').click(function() {
       let editId = $(this).attr('id');
       console.log(editId);
-      let editMovie = movieArray[editId - 1];
-      $('aside').html(`<form><label for="rename-title">Movie Title Here</label>
-            <input type="text" id="rename-title">
-            <label for="edit-rating">Edit Rating</label>
-            <input type="text" id="edit-rating">
-            <input type="submit" id="submit-edit"></form>`)
-    });
+      const url = `api/movies/${editId}`;
+      fetch(url).then(function (movieToEdit) {
+        return movieToEdit.json().then(function (movieToEdit) {
+          console.log(movieToEdit);
+          $('aside').html(`<label for="rename-title">Movie Title Here</label>
+              <input type="text" id="rename-title" value="${movieToEdit.title}">
+              <label for="edit-rating">Edit Rating</label>
+              <input type="text" id="edit-rating" value="${movieToEdit.rating}">
+              <input type="submit" id="submit-edit">`);
 
+          $("#submit-edit").click()
 
-  }).then(function () {
+        }).then((movies) => {
+            movieArray = movies;
+          }).then(() => {
+            postMovies();
+            $("#movie-box").html("");
+          });
+
+        });
+      })
+    }).then(function () {
     $('#load-head').hide('')
   }).catch((error) => {
     alert('Oh no! Something went wrong.\nCheck the console for details.')
     console.log(error);
   })
 }
+
+// let newTitle = $("#rename-title").val();
+// let newRating = $("#edit-rating").val();
+// let newMovieObject = {
+//   "title": newTitle,
+//   "rating": newRating,
+//   "id": editId
+// };
 
 let lastElementOnLoad;
 let highestIdOnLead;
@@ -123,6 +143,24 @@ function deletePost(postId) {
     movieArray = movies;
   }).then(() => {
     postMovies();
+  })
+}
+
+function addEditedMovie(editedMovie) {
+  const url = `api/movies/${editedMovie.id}`;
+  const options = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(editedMovie),
+  };
+
+  fetch(url, options).then((movies) => {
+    movieArray = movies;
+  }).then(() => {
+    postMovies();
+    $("#movie-box").html("");
   })
 }
 
