@@ -1,29 +1,34 @@
 {
   "movies": [
     {
-      "title": "A Star Wars Episode 88",
-      "rating": "6",
+      "title": "Star Wars Episode 88",
+      "rating": "Still better than Phantom Menace",
       "id": 2
     },
     {
       "title": "Cinderella",
-      "rating": "84",
+      "rating": "6",
       "id": 8
     },
     {
       "title": "Shawshank Redemption",
-      "rating": "42",
+      "rating": "Really Good",
       "id": 10
-    },
-    {
-      "title": "Your new name is Betty-Lou",
-      "rating": "ln(pi)",
-      "id": 13
     },
     {
       "title": "V for Vendetta",
       "rating": "5",
       "id": 14
+    },
+    {
+      "title": "Fear and Loathing in Las Vegas",
+      "rating": "Bat Country",
+      "id": 15
+    },
+    {
+      "title": "Test ",
+      "rating": "8",
+      "id": 17
     }
   ]
 }

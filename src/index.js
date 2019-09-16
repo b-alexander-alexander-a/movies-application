@@ -2,8 +2,6 @@
  * es6 modules and imports
  */
 
-import sayHello from './hello';
-sayHello('World');
 /**
  * require style imports
  */
@@ -20,7 +18,6 @@ function postMovies() {
       movieVariable += `<section class="card-div card"><div class="card-body">id#${id} - ${title} </div><div class="card-footer"> rating: ${rating}</div><button class="delete-button">This movie is garbage</button><button class="edit-button" id="${id}">Fix what this says.</button></section>`
     $("#movie-box").html(movieVariable);
     });
-    console.log(movieVariable);
 
 
     $('.delete-button').click(function () {
@@ -30,15 +27,14 @@ function postMovies() {
 
     $('.edit-button').click(function() {
       let editId = $(this).attr('id');
-      console.log(editId);
       const url = `api/movies/${editId}`;
       fetch(url).then(function (movieToEdit) {
         return movieToEdit.json().then(function (movieToEdit) {
           console.log(movieToEdit);
-          $('aside').html(`<label for="rename-title">Movie Title Here</label>
-              <input type="text" id="rename-title" value="${movieToEdit.title}">
-              <label for="edit-rating">Edit Rating</label>
-              <input type="text" id="edit-rating" value="${movieToEdit.rating}">
+          $('aside').html(`<label for="rename-title">Movie Title Here</label><br>
+              <input type="text" id="rename-title" value="${movieToEdit.title}"><br>
+              <label for="edit-rating">Edit Rating</label><br>
+              <input type="text" id="edit-rating" value="${movieToEdit.rating}"><br>
               <input type="submit" id="submit-edit" class="${editId}">`);
 
           $("#submit-edit").click(function() {
